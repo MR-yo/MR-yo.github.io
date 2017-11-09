@@ -1,0 +1,25 @@
+<footer class="site-footer">
+  <div class="wrapper">
+    <h2 class="footer-heading">友情链接</h2>
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3">
+        <ul class="contact-list">
+          {% for friend in site.friends %}
+            <li><a href="{{ friend.href }}" target="_blank">{{ friend.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col footer-col-3">
+        <ul class="social-media-list">
+          {% include github.html %}
+          {% include sina.html %}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-col-wrapper">
+      <div style="text-align: center;">
+        <p>Powered by <a href="http://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
