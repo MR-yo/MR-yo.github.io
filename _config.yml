@@ -1,26 +1,69 @@
+# Site settings
+title: home title
+SEOTitle: web title
+header-img: img/home-bg.jpg
+email: email@email.com
+description: "main  description"
+keyword: "keyword keyword  keyword  keyword  keyword"
+url: "https://syea.xin"      
+baseurl: ""                      
 
-title: Syea for future
 
-email: 244843347@qq.com
 
-baseurl: "" 
+# SNS settings
+RSS: false
+weibo_username:  15757174130     
+zhihu_username:     
+github_username:     MR-yo
+twitter_username:   
 
-url: ""  
 
-author: Wang Jiawei
 
-author_zh-CN: 王嘉威
+# Build settings
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+anchorjs: true
 
-timezone: Asia/Shanghai
 
-twitter_username:
 
-github_username: 
-  
-sina_username: 
+# Gems
+gems: [jekyll-paginate]
 
-exclude: [
-  "README.md"
-]
 
-port: 4000
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+   input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+disqus_username: hux
+
+# Netease setttings
+netease_comment: false
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "description for what? "
+sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: true
+
+
+
