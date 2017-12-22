@@ -6,8 +6,9 @@ title: 尝试 ReactNative
 
 ## 1.环境搭建
 
-ReactNative 中文:()[]
-ReactNative 英文官网:()[]
+ReactNative 中文: [http://reactnative.cn](http://reactnative.cn)
+
+ReactNative 英文官网: [https://reactjs.org](https://reactjs.org)
 
 官网都有详细的教程,有从零开始新建一个 reactnative 项目,也有讲如何接入原生项目。
 
