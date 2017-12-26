@@ -1,21 +1,20 @@
 # Site settings
-title: home title
-SEOTitle: web title
+title: Syea Blog
+SEOTitle: Syea
 header-img: img/home-bg.jpg
 email: email@email.com
-description: "main  description"
-keyword: "keyword keyword  keyword  keyword  keyword"
-url: "https://syea.xin"      
+description: "config.descripetion"
+keyword: "iOS Objective-C React"
+url: "https://mr-yo.github.io"      
 baseurl: ""                      
 
 
 
 # SNS settings
 RSS: false
-weibo_username:  15757174130     
-zhihu_username:     
-github_username:     MR-yo
-twitter_username:   
+weibo_username:  3292010391    
+github_username:   MR-yo
+twitter_username:   Jiawei_Hope
 
 
 
@@ -44,7 +43,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hux
+disqus_username: 一只小火龙
 
 # Netease setttings
 netease_comment: false
@@ -52,13 +51,13 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "description for what? "
-sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "安静地写代码"
+sidebar-avatar: /img/headImage.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
 
 
 # Progressive Web Apps

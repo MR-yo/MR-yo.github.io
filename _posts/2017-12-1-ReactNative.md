@@ -1,6 +1,14 @@
 ---
 layout: post
+author: syea
 title: 尝试 ReactNative
+# subtitle:
+# header-img: 
+# header-mask:  
+# catalog: 
+# multilingual: 
+tags:
+    - ReactNative
 ---
 # ReactNative
 
