@@ -16,7 +16,7 @@ tags:
 
 ReactNative 中文: [http://reactnative.cn](http://reactnative.cn)
 
-ReactNative 英文官网: [https://reactjs.org](https://reactjs.org)
+ReactNative 英文官网: [http://facebook.github.io/react-native/](http://facebook.github.io/react-native/)
 
 官网都有详细的教程,有从零开始新建一个 reactnative 项目,也有讲如何接入原生项目。
 
