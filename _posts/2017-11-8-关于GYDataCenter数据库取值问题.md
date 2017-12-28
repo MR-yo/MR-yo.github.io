@@ -1,7 +1,7 @@
 ---
 layout: post
 author: syea
-title: 关于 iOS 数据库取值问题
+title: 关于 GYDataCenter 数据库取值问题
 # subtitle:
 # header-img: 
 # header-mask:  

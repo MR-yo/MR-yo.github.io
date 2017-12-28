@@ -71,7 +71,7 @@ iOS端 Over
 
 后端 Over
 
-# 3.开始学着去控制 reactnative
+# 3.开始学着去控制 `ReactNative`
 
 1. 首先，通过改写 `index.ios.js` 可以改变iOS端展示的界面
 2. 其次，去学习如何写 react 吧 = =！  
