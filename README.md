@@ -1,1 +1,3 @@
-start
+**struggle**
+
+for the future 
