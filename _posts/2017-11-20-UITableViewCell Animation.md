@@ -17,7 +17,9 @@ tags:
 以前喜欢各种酷炫的列表动画,后来感觉太花哨了,一般一个渐变的效果就够了。
 其实各种 animation 都能加在 cell 上,关键是要做的使用户看起来,用起来很舒服,而不是单纯地 show 一波。
 
-#### 1.y轴翻转,可以类推各种翻转,duration如果根据,indexPath.row来可以产生一种渐变的效果.
+#### 1.y轴翻转,可以类推各种翻转
+
+**duration如果根据,indexPath.row来可以产生一种渐变的效果.**
 
 ```
     cell.layer.transform = CATransform3DMakeRotation(-90, 0, 1, 0);
