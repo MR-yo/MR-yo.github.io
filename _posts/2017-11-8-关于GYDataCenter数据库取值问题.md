@@ -12,7 +12,7 @@ tags:
     - Objective-C
 ---
 
-##  iOS 数据库
+## 关于 GYDataCenter 数据库取值问题
 
 今天在使用 `GYDataCenter` ([GYDataCenter]() 是微信读书团队出的一个封装`FMDB`的开源框架) 的时候遇到一个奇怪的错误，以 string 形式存入数据库的字段，取出的时候变成了 number，导致应用某处用`isEqualToString`做判断的时候直接 crash。
 
