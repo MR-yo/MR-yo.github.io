@@ -37,6 +37,7 @@ pod 'React', :path => './ReactNative/node_modules/react-native', :subspecs => [
 ]
 pod 'yoga', :path => './ReactNative/node_modules/react-native/ReactCommon/yoga/yoga.podspec'
 ```
+不同版本的 RN 需要引入的模块也不同，注意官网上的教程更新
 
 2. 创建要使用 reactnative 的模块
 导入头文件
@@ -73,7 +74,7 @@ iOS端 Over
 
 # 3.开始学着去控制 `ReactNative`
 
-1. 首先，通过改写 `index.ios.js` 可以改变iOS端展示的界面
+1. 首先，通过改写 `index.js` 可以改变iOS端展示的界面
 2. 其次，去学习如何写 react 吧 = =！  
 
 加油！
