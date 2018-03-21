@@ -123,3 +123,94 @@ tags:
 1. UITableView 的缓存池有上限，会自己处理。<br />
 2. 通过数据源绑定唯一 id 可以真正地用上 UITableView 的缓存策略。<br />
 
+---
+
+#### 2018.3.21 新增
+ 
+昨天阿里一面的时候与面试官有关 UITableView 的缓存池复用有了不同的意见，于是我去看了一下 UITableView 的源码<br>
+[https://github.com/BigZaphod/Chameleon/blob/master/UIKit/Classes/UITableView.m](https://github.com/BigZaphod/Chameleon/blob/master/UIKit/Classes/UITableView.m)
+
+```
+@implementation UITableView {
+    BOOL _needsReload;
+    NSIndexPath *_selectedRow;
+    NSIndexPath *_highlightedRow;
+    NSMutableDictionary *_cachedCells;  
+    NSMutableSet *_reusableCells;      
+    NSMutableArray *_sections;
+    
+    ...
+}
+```
+
+可以看出， UITableView 有两种缓存方式 `_cachedCells` 和 `_reusableCells`<br>
+
+1. `_cachedCells`
+
+```
+- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // this is allowed to return nil if the cell isn't visible and is not restricted to only returning visible cells
+    // so this simple call should be good enough.
+    return [_cachedCells objectForKey:indexPath]; // 这里按 indexPath 找出 cell
+}
+```
+
+```
+ for (NSInteger row=0; row<numberOfRows; row++) {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    CGRect rowRect = [self rectForRowAtIndexPath:indexPath];
+    if (CGRectIntersectsRect(rowRect,visibleBounds) && rowRect.size.height > 0) {
+        UITableViewCell *cell = [availableCells objectForKey:indexPath] ?: [self.dataSource tableView:self cellForRowAtIndexPath:indexPath];
+        if (cell) {
+            [_cachedCells setObject:cell forKey:indexPath]; // 这里按 indexPath 添加 cell
+            [availableCells removeObjectForKey:indexPath];
+            cell.highlighted = [_highlightedRow isEqual:indexPath];
+            cell.selected = [_selectedRow isEqual:indexPath];
+            cell.frame = rowRect;
+            cell.backgroundColor = self.backgroundColor;
+            [cell _setSeparatorStyle:_separatorStyle color:_separatorColor];
+            [self addSubview:cell];
+        }
+    }
+}
+```
+查阅它的相关方法就可以看出，`_cachedCells`用于缓存`indexPath`相关的 cell
+
+2. `_reusableCells`
+
+```
+    // remove old cells, but save off any that might be reusable
+    for (UITableViewCell *cell in [availableCells allValues]) {
+        if (cell.reuseIdentifier) {
+            [_reusableCells addObject:cell];  // 这里只要 cell.reuseIdentifier 不为空就加入
+        } else {
+            [cell removeFromSuperview];
+        }
+    }
+```
+
+```
+- (UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier
+{
+    for (UITableViewCell *cell in _reusableCells) {
+        if ([cell.reuseIdentifier isEqualToString:identifier]) { // 这里只要 cell.reuseIdentifier 相等就取出
+            UITableViewCell *strongCell = cell;
+            
+            // the above strongCell reference seems totally unnecessary, but without it ARC apparently
+            // ends up releasing the cell when it's removed on this line even though we're referencing it
+            // later in this method by way of the cell variable. I do not like this.
+            [_reusableCells removeObject:cell];
+
+            [strongCell prepareForReuse];
+            return strongCell;
+        }
+    }
+    
+    return nil;
+}
+```
+
+很明显，加入`_reusableCells`的是带有不为空 `identifier` 的`UITableViewCell`，而取出 `cell` 时却只判断了 `identifier` 相等就取出，虽然 `_reusableCells` 用的是`NSMutableSet`，但却不能保证 `identifier` 一样时，取出的 cell 是不是真正想要的 cell。通过使用唯一的`identifier`可以进行有效的重用，而不用再次创建 cell。
+
+其实个人不是很理解为什么这里的`_reusableCells` 要用`NSMutableSet` 而不跟` _cachedCells` 一样，采用 `NSMutableDictionary`.很多缓存策略，包括其自身的` _cachedCells`都采用的是键值对结构。 期待大佬解惑。
