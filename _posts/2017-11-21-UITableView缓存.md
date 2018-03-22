@@ -1,7 +1,7 @@
 ---
 layout: post
 author: syea
-title: UITableView缓存池
+title: 对UITableView缓存的理解
 # subtitle:
 # header-img: 
 # header-mask:  
@@ -12,7 +12,7 @@ tags:
     - Objective-C
 ---
 
-# 关于 UITableView 缓存池
+# 对UITableView缓存的理解
 
 `UITableView` 是 iOS 开发中比较常用的控件，对于 cell 的重用，网上很多资料都是这样写的
 
@@ -127,7 +127,7 @@ tags:
 
 #### 2018.3.21 新增
  
-昨天阿里一面的时候与面试官有关 UITableView 的缓存池复用有了不同的意见，于是我去看了一下 UITableView 的源码<br>
+昨天跟阿里的一位程序员对于有关 UITableView 的缓存池复用有了不同的意见，于是我去看了一下 UITableView 的源码<br>
 [https://github.com/BigZaphod/Chameleon/blob/master/UIKit/Classes/UITableView.m](https://github.com/BigZaphod/Chameleon/blob/master/UIKit/Classes/UITableView.m)
 
 ```
@@ -211,3 +211,12 @@ tags:
 很明显，加入`_reusableCells`的是带有不为空 `identifier` 的`UITableViewCell`，而取出 cell 时却只判断了 `identifier` 相等就取出，虽然 `_reusableCells` 用的是`NSMutableSet`，但却不能保证 `identifier` 一样时，取出的 cell 是不是真正想要的 cell，cell的确可以不用再次创建，但是数据源不一定相同，除非你每次都重绘界面。通过使用唯一的`identifier`可以进行有效的重用，而不用再次创建 cell或者重绘界面。
 
 其实个人不是很理解为什么这里的`_reusableCells` 要用`NSMutableSet` 而不跟` _cachedCells` 一样，采用 `NSMutableDictionary`.很多缓存策略，包括其自身的` _cachedCells`都采用的是键值对结构。 期待大佬解惑。
+
+#### 2018.3.22 更新
+
+与我师父沟通后前来反省，同一个`identifier` 的确只能取出`UITableViewCell`，而且还要重绘界面（布局一样的可以不重绘，只需要更新一下数据展示）。但是！就算这样，缓存的开销，也比缓存多个不同的 cell 小。<br>
+
+同一个`identifier`的情况下，`UITableView`就只需要创建屏幕上能够放下的 cell 个数，滑动的时候，只需要不停地更新数据就 ok 了。就算遇到 cell 布局不一样的情况，也只需定义多个`identifier`<br>
+我的不同`identifier`就厉害了，每次都是一个新的`UITableViewCell`，开销特别大，但是讲道理（说瞎话），性能会比较好，毕竟都不用重绘。<br>
+
+over 还需努力啊。
