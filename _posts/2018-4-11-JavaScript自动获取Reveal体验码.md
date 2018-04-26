@@ -15,18 +15,22 @@ tags:
 
 #### 起因
 
-在网上搜了一圈没有找到 Reveal 的最新破解版，就想到不停地获取14天体验的`Activation Number`来使用Reveal。
+在网上搜了一圈没有找到 Reveal 的最新破解版，在 Reveal 官网[https://revealapp.com/download/](https://revealapp.com/download/) 可以通过输入邮箱、first name、last name 来获取 Reveal 的 `Activation Number`，通过这个`Activation Number` 可以进行为期14天的试用。由此想到，只要有无限的邮箱就能无限地试用。
 
 #### 分析
 
-1. 获取 Reveal 的 `Activation Number` 需要在[https://revealapp.com/download/](https://revealapp.com/download/)输入邮箱、first name、last name。
-2. 由此想到，只要有无限的邮箱就能无限地试用`Activation Number`。
-3. 于是通过搜索临时邮箱，可以找到很多具有这种功能的网站。此处我选择了[https://www.guerrillamail.com/](https://www.guerrillamail.com/)。
-4. 整个流程就变成 **前往临时邮箱网站**->**将生成的邮箱填入reveal申请界面**->**返回临时邮箱网站获取`Activation Number`**
+1. 个人的邮箱数量有限，如何获取无限的邮箱？
+在搜索栏输入临时邮箱，结果还真的有好多。经过筛选（免费、方便...）此处我选择了[https://www.guerrillamail.com/](https://www.guerrillamail.com/)。
+
+2. 如何向目标网页注入 js ？
+利用 Chrome！教程网上有很多。
+
+接下来确定业务流程:<br>
+**前往临时邮箱网站**->**将生成的邮箱填入reveal申请界面**->**返回临时邮箱网站获取`Activation Number`**
+
+ok, 准备实践。
 
 #### JavaScript实践
-
-利用 Chrome 可以向目标网站注入 js，教程网上一大片。
 
 1. 编写Chrome插件配置文件
 ```
