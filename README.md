@@ -6,10 +6,14 @@
 
     1. Objective-C 
 
-    2. React Native 
-
-    3. React 
-
+    2. Swift
+    
+    3. Math
+    
     4. Life
+    
+    5. React Native 
 
-    5. Other
+    6. React 
+
+    7. Other
