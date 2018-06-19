@@ -15,7 +15,7 @@ tags:
 
 #### 起因
 
-在网上搜了一圈没有找到 Reveal 的最新破解版，在 Reveal 官网[https://revealapp.com/download/](https://revealapp.com/download/) 可以通过输入邮箱、first name、last name 来获取 Reveal 的 `Activation Number`，通过这个`Activation Number` 可以进行为期14天的试用。由此想到，只要有无限的邮箱就能无限地试用。
+在网上搜了一圈没有找到 Reveal 的最新破解版(难为情..下意识的就想找破解版)，在 Reveal 官网[https://revealapp.com/download/](https://revealapp.com/download/) 可以通过输入邮箱、first name、last name 来获取 Reveal 的 `Activation Number`，通过这个`Activation Number` 可以进行为期14天的试用。由此想到，只要有无限的邮箱就能无限地试用。
 
 #### 分析
 
@@ -99,4 +99,4 @@ window.open("https://www.sharklasers.com/" + "#" + tempEmail);
 
 看起来的写的很简单，实际上做的时候碰了很多坑，各种调试。最后也不是很完美，返回邮箱去获取`Activation Number`的时候还得输入一开始获取的tempEmail，并等待邮件的到来，再阅读邮件获取`Activation Number`。
 
-总的来说还是一次不错的尝试，希望自己继续进步。
+总的来说还是一次不错的尝试.
