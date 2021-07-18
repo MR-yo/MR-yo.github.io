@@ -140,7 +140,7 @@ End of assembler dump.
 	}
 ```
 
-3) phase_3
+3) phase_3    
 还是`disassemble`    
 ```
 (gdb) disassemble phase_3
@@ -213,7 +213,7 @@ End of assembler dump.
 ```
 这样一来就很简单了，如果第一个数为0，则第二个应为`$0xcf`；如果第一个数为1，则第二个数为`$0x2c3`，以此类推。
 
-4. phase_4
+4) phase_4
 仍然是反汇编
 ```
 (gdb) disassemble phase_4
@@ -267,7 +267,7 @@ Dump of assembler code for function func4:
    0x000000000040100b <+61>:	retq   
 End of assembler dump.
 ```
-将两个关键函数翻译之后如下所示：
+将两个关键函数翻译之后如下所示：    
 ```
 function phase_4
 	%rsp - 24
@@ -296,7 +296,8 @@ function phase_4
 		explode_bomb();
 		return;
 	}
---------------------------------
+
+// --------------------------------
 
 func4  
 
@@ -329,7 +330,9 @@ func4
 	}
 
 ```
-实验要求在调用完`func4`之后，返回值为0，`12(%rsp)`也为0，这个代码比较复杂，我决定翻译成java运行开来得出结果
+
+实验要求在调用完`func4`之后，返回值为0，`12(%rsp)`也为0，这个代码比较复杂，我决定翻译成java运行开来得出结果    
+
 ```
     // x <=14
     public static int func4(int x, int a, int b) {
@@ -374,4 +377,4 @@ func4
 从0到14for循环输出返回值，为0的即为答案，一共有三组。
 
 ## 总结
-之后的题目都尝试过一二，死磕到底还是妥协我纠结了很久，最终还是妥协了，不一定是错的选择，但肯定不是能让人开心的选择。
+之后的题目都尝试过一二，死磕到底还是妥协我纠结了很久，最终还是妥协了。不一定是错的选择，但肯定不是能让人开心的选择。
